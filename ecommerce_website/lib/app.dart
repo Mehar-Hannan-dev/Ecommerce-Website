@@ -30,9 +30,7 @@ class UnknownRoutePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('404 - Page Not Found'),
-      ),
+      appBar: AppBar(title: const Text('404 - Page Not Found')),
       body: Center(
         child: Text(
           'The page you are looking for does not exist.',
@@ -45,8 +43,54 @@ class UnknownRoutePage extends StatelessWidget {
   }
 }
 
-class AppRoot extends StatelessWidget {
+class AppRoot extends StatefulWidget {
   const AppRoot({super.key});
+
+  @override
+  State<AppRoot> createState() => _AppRootState();
+}
+
+class _AppRootState extends State<AppRoot> {
+  late final GoRouter _router = GoRouter(
+    initialLocation: '/',
+    errorBuilder: (context, state) => const UnknownRoutePage(),
+    routes: [
+      GoRoute(path: '/', builder: (context, state) => const HomePage()),
+      GoRoute(
+        path: '/products',
+        builder: (context, state) => const ProductsListPage(),
+        routes: [
+          GoRoute(
+            path: 'productid',
+            builder: (context, state) => ProductDetailPage(
+              productid: state.pathParameters['productid']!,
+            ),
+          ),
+          GoRoute(path: '/cart', builder: (context, state) => const CartPage()),
+          GoRoute(
+            path: '/checkout',
+            builder: (context, state) => const CheckoutPage(),
+          ),
+          GoRoute(
+            path: '/profile',
+            builder: (context, state) => const UserProfilePage(),
+          ),
+
+          //Admin Panel Routes
+          GoRoute(
+            path: '/panel',
+            builder: (context, state) => const DashboardPage(),
+            routes: [
+              GoRoute(
+                path: 'orders',
+                builder: (context, state) => const OrderManagementPage(),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  );
 
   @override
   Widget build(BuildContext context) {
