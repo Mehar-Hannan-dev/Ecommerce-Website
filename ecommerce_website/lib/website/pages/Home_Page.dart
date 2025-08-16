@@ -18,9 +18,9 @@ class _HomePageState extends State<HomePage> {
         children: [
           Column(children: []),
           CustomPadding(
-            top: 20,
-            left: 20,
-            right: 20,
+            top: 12,
+            left: 12,
+            right: 12,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -30,20 +30,49 @@ class _HomePageState extends State<HomePage> {
                     fontWeight: FontWeight.bold,
                     color: context.primaryText,
                   ),
-                  mobileFontSize: 16,
+                  mobileFontSize: 12,
                   desktopFontSize: 24,
                   tabletFontSize: 20,
                   mobileLandscapeFontSize: 18,
                   tabletLandscapeFontSize: 22,
                 ),
-                Row(
-                  children: [
-                    ResponsiveText(text: 'text'),
-                    ResponsiveText(text: 'text'),
-                    ResponsiveText(text: 'text'),
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    spacing: 8,
+                    children: [
+                      ResponsiveText(
+                        text: 'Products',
+                        textStyle: TextStyle(fontWeight: FontWeight.normal),
+                        mobileFontSize: 8,
+                        desktopFontSize: 18,
+                        tabletFontSize: 16,
+                        mobileLandscapeFontSize: 15,
+                        tabletLandscapeFontSize: 17,
+                      ),
+                      ResponsiveText(
+                        text: 'Our Story',
+                        textStyle: TextStyle(fontWeight: FontWeight.normal),
+                        mobileFontSize: 8,
+                        desktopFontSize: 18,
+                        tabletFontSize: 16,
+                        mobileLandscapeFontSize: 15,
+                        tabletLandscapeFontSize: 17,
+                      ),
+                      ResponsiveText(
+                        text: 'News & Events',
+                        textStyle: TextStyle(fontWeight: FontWeight.normal),
+                        mobileFontSize: 8,
+                        desktopFontSize: 18,
+                        tabletFontSize: 16,
+                        mobileLandscapeFontSize: 15,
+                        tabletLandscapeFontSize: 17,
+                      ),
+                    ],
+                  ),
                 ),
                 Row(
+                  spacing: 5,
                   children: [
                     ResponsiveIcon(
                       icon: Icons.search_rounded,
@@ -62,7 +91,50 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     ResponsiveButton(
-                      child: ResponsiveText(text: 'text'),
+                      padding: const ResponsiveValue(
+                        mobile: EdgeInsetsGeometry.directional(
+                          start: 8,
+                          end: 8,
+                          top: 4,
+                          bottom: 4,
+                        ),
+                        desktop: EdgeInsetsGeometry.directional(
+                          start: 16,
+                          end: 16,
+                          top: 8,
+                          bottom: 8,
+                        ),
+                        tablet: EdgeInsetsGeometry.directional(
+                          start: 12,
+                          end: 12,
+                          top: 6,
+                          bottom: 6,
+                        ),
+                        mobileLandscape: EdgeInsetsGeometry.directional(
+                          start: 8,
+                          end: 8,
+                          top: 4,
+                          bottom: 4,
+                        ),
+                        tabletLandscape: EdgeInsetsGeometry.directional(
+                          start: 12,
+                          end: 12,
+                          top: 6,
+                          bottom: 6,
+                        ),
+                      ),
+                      child: ResponsiveText(
+                        text: 'Log In',
+                        textStyle: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: context.primaryText,
+                        ),
+                        mobileFontSize: 12,
+                        desktopFontSize: 16,
+                        tabletFontSize: 14,
+                        mobileLandscapeFontSize: 12,
+                        tabletLandscapeFontSize: 14,
+                      ),
                       onPressed: () {},
                     ),
                   ],
