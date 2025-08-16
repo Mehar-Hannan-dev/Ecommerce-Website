@@ -30,7 +30,7 @@ class UnknownRoutePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('404 - Page Not Found')),
+      appBar: AppBar(title: const ResponsiveText(text: '404 page not Found')),
       body: Center(
         child: Text(
           'The page you are looking for does not exist.',
@@ -52,10 +52,18 @@ class AppRoot extends StatefulWidget {
 
 class _AppRootState extends State<AppRoot> {
   late final GoRouter _router = GoRouter(
+    //intial location
     initialLocation: '/',
+
+    //Error handling for unknown page
     errorBuilder: (context, state) => const UnknownRoutePage(),
+
+    //Define the routes
+    //--Website Routes---
     routes: [
+      // Home Page
       GoRoute(path: '/', builder: (context, state) => const HomePage()),
+      //Products List Page
       GoRoute(
         path: '/products',
         builder: (context, state) => const ProductsListPage(),
@@ -63,29 +71,49 @@ class _AppRootState extends State<AppRoot> {
           GoRoute(
             path: 'productid',
             builder: (context, state) => ProductDetailPage(
-              productid: state.pathParameters['productid']!,
+              productId: state.pathParameters['productid']!,
             ),
           ),
-          GoRoute(path: '/cart', builder: (context, state) => const CartPage()),
-          GoRoute(
-            path: '/checkout',
-            builder: (context, state) => const CheckoutPage(),
-          ),
-          GoRoute(
-            path: '/profile',
-            builder: (context, state) => const UserProfilePage(),
-          ),
+        ],
+      ),
+      //Cart Page
+      GoRoute(path: '/cart', builder: (context, state) => const CartPage()),
+      //Checkout Page
+      GoRoute(
+        path: '/checkout',
+        builder: (context, state) => const CheckoutPage(),
+      ),
+      //User Profile Page
+      GoRoute(
+        path: '/profile',
+        builder: (context, state) => const UserProfilePage(),
+      ),
 
-          //Admin Panel Routes
+      //--Panel Routes---
+      // Dashboard Page
+      GoRoute(
+        path: '/panel',
+        builder: (context, state) => DashboardPage(),
+        routes: [
+          // Orders Management Page
           GoRoute(
-            path: '/panel',
-            builder: (context, state) => const DashboardPage(),
-            routes: [
-              GoRoute(
-                path: 'orders',
-                builder: (context, state) => const OrderManagementPage(),
-              ),
-            ],
+            path: 'orders',
+            builder: (context, state) => OdersManagementPage(),
+          ),
+          // Product Editor Page
+          GoRoute(
+            path: 'products',
+            builder: (context, state) => ProductEditorPage(),
+          ),
+          // User Management Page
+          GoRoute(
+            path: 'user',
+            builder: (context, State) => UserManagementPage(),
+          ),
+          // Panel Setting Page
+          GoRoute(
+            path: 'settings',
+            builder: (context, state) => PanelSettingsPage(),
           ),
         ],
       ),
@@ -94,6 +122,15 @@ class _AppRootState extends State<AppRoot> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    final Brightness platformBrightness = MediaQuery.platformBrightnessOf(
+      context,
+    );
+    return MaterialApp.router(
+      title: 'E-Commerce App',
+      // Apply Your Dynamic Theme
+      theme: buildAppTheme(platformBrightness),
+      debugShowCheckedModeBanner: false,
+      routerConfig: _router,
+    );
   }
 }
