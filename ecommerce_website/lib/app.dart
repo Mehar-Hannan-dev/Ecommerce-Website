@@ -108,7 +108,7 @@ class _AppRootState extends State<AppRoot> {
           // User Management Page
           GoRoute(
             path: 'user',
-            builder: (context, State) => UserManagementPage(),
+            builder: (context, state) => UserManagementPage(),
           ),
           // Panel Setting Page
           GoRoute(
