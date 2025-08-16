@@ -776,3 +776,73 @@ class ResponsiveIconButton extends StatelessWidget {
     );
   }
 }
+
+// ⭐ NEW: ResponsiveContainer Widget ⭐
+class ResponsiveContainer extends StatelessWidget {
+  final Widget? child;
+  final ResponsiveValue<AlignmentGeometry>? alignment;
+  final ResponsiveValue<EdgeInsetsGeometry>? padding;
+  final ResponsiveValue<EdgeInsetsGeometry>? margin;
+  final ResponsiveValue<Color>? color;
+  final ResponsiveValue<Decoration>? decoration;
+  final ResponsiveValue<double>? width;
+  final ResponsiveValue<double>? height;
+  final ResponsiveValue<double>? widthPercentage; // NEW
+  final ResponsiveValue<double>? heightPercentage; // NEW
+  final BoxConstraints? constraints;
+  final Clip clipBehavior;
+
+  const ResponsiveContainer({
+    super.key,
+    this.child,
+    this.alignment,
+    this.padding,
+    this.margin,
+    this.color,
+    this.decoration,
+    this.width,
+    this.height,
+    this.widthPercentage, // NEW
+    this.heightPercentage, // NEW
+    this.constraints,
+    this.clipBehavior = Clip.none,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final AlignmentGeometry? effectiveAlignment = alignment?.getValue(context);
+    final EdgeInsetsGeometry? effectivePadding = padding?.getValue(context);
+    final EdgeInsetsGeometry? effectiveMargin = margin?.getValue(context);
+    final Color? effectiveColor = color?.getValue(context);
+    final Decoration? effectiveDecoration = decoration?.getValue(context);
+
+    // Calculate effectiveWidth, prioritizing widthPercentage if provided
+    double? effectiveWidth;
+    if (widthPercentage != null) {
+      effectiveWidth = widthPercentage!.getValue(context) * MediaQuery.of(context).size.width;
+    } else {
+      effectiveWidth = width?.getValue(context);
+    }
+
+    // Calculate effectiveHeight, prioritizing heightPercentage if provided
+    double? effectiveHeight;
+    if (heightPercentage != null) {
+      effectiveHeight = heightPercentage!.getValue(context) * MediaQuery.of(context).size.height;
+    } else {
+      effectiveHeight = height?.getValue(context);
+    }
+
+    return Container(
+      alignment: effectiveAlignment,
+      padding: effectivePadding,
+      margin: effectiveMargin,
+      color: effectiveColor,
+      decoration: effectiveDecoration,
+      width: effectiveWidth,
+      height: effectiveHeight,
+      constraints: constraints,
+      clipBehavior: clipBehavior,
+      child: child,
+    );
+  }
+}

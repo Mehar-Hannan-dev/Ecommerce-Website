@@ -16,11 +16,42 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          Column(children: []),
+          SingleChildScrollView(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ResponsiveContainer(
+                  height: const ResponsiveValue(
+                    mobile: 200,
+                    desktop: 400,
+                    tablet: 300,
+                    mobileLandscape: 250,
+                    tabletLandscape: 350,
+                  ),
+                  widthPercentage: ResponsiveValue(
+                    mobile: 0.5,
+                    desktop: 0.5,
+                    tablet: 0.5,
+                    mobileLandscape: 0.5,
+                    tabletLandscape: 0.5,
+                  ),
+                  color: ResponsiveValue(
+                    mobile: context.secondaryText,
+                    desktop: context.primaryBackground,
+                    tablet: context.primaryBackground,
+                    mobileLandscape: context.primaryBackground,
+                    tabletLandscape: context.primaryBackground,
+                  ),
+                ),
+              ],
+            ),
+          ),
           CustomPadding(
             top: 12,
-            left: 12,
-            right: 12,
+            left: 8,
+            right: 8,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -93,10 +124,10 @@ class _HomePageState extends State<HomePage> {
                     ResponsiveButton(
                       padding: const ResponsiveValue(
                         mobile: EdgeInsetsGeometry.directional(
-                          start: 8,
-                          end: 8,
-                          top: 4,
-                          bottom: 4,
+                          start: 2,
+                          end: 2,
+                          top: 1,
+                          bottom: 1,
                         ),
                         desktop: EdgeInsetsGeometry.directional(
                           start: 16,
@@ -129,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.bold,
                           color: context.primaryText,
                         ),
-                        mobileFontSize: 12,
+                        mobileFontSize: 8,
                         desktopFontSize: 16,
                         tabletFontSize: 14,
                         mobileLandscapeFontSize: 12,
