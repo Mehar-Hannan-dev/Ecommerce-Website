@@ -16,10 +16,9 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: Stack(
         children: [
-          Column(
-            children: [],
-          ),
+          Column(children: []),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               ResponsiveText(text: 'text'),
               Row(
@@ -31,11 +30,30 @@ class _HomePageState extends State<HomePage> {
               ),
               Row(
                 children: [
-                  
+                  ResponsiveIcon(
+                    icon: Icons.search_rounded,
+                    size: const ResponsiveValue(
+                      mobile: 16,
+                      desktop: 24,
+                      tablet: 20,
+                    ),
+                  ),
+                  ResponsiveIcon(
+                    icon: Icons.shopping_bag_rounded,
+                    size: const ResponsiveValue(
+                      mobile: 16,
+                      desktop: 24,
+                      tablet: 20,
+                    ),
+                  ),
+                  ResponsiveButton(
+                    child: ResponsiveText(text: 'text'),
+                    onPressed: () {},
+                  ),
                 ],
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
