@@ -14,9 +14,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const ResponsiveText(text: 'Home Page')),
-      body: Center(
-        child: Text('Welcome to the Home Page', style: context.bodyLarge),
+      body: Stack(
+        children: [
+          Column(
+            children: [],
+          ),
+          Row(
+            children: [
+              ResponsiveText(text: 'text'),
+              Row(
+                children: [
+                  ResponsiveText(text: 'text'),
+                  ResponsiveText(text: 'text'),
+                  ResponsiveText(text: 'text'),
+                ],
+              ),
+              Row(
+                children: [
+                  
+                ],
+              )
+            ],
+          )
+        ],
       ),
     );
   }
