@@ -27,7 +27,7 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     ResponsiveContainer(
                       height: const ResponsiveValue(
-                        mobile: 250,
+                        mobile: 280,
                         desktop: 800,
                         tablet: 600,
                         mobileLandscape: 300,
@@ -83,13 +83,118 @@ class _HomePageState extends State<HomePage> {
                               tabletLandscapeFontSize: 18,
                             ),
                           ),
-                          
+                          CustomPadding(
+                            top: 16,
+                            left: 16,
+                            right: 16,
+                            child: Row(
+                              spacing: 8,
+                              children: [
+                                ResponsiveButton(
+                                  padding: const ResponsiveValue(
+                                    mobile: EdgeInsetsGeometry.directional(
+                                      start: 8,
+                                      end: 8,
+                                      top: 4,
+                                      bottom: 4,
+                                    ),
+                                    desktop: EdgeInsetsGeometry.directional(
+                                      start: 16,
+                                      end: 16,
+                                      top: 8,
+                                      bottom: 8,
+                                    ),
+                                    tablet: EdgeInsetsGeometry.directional(
+                                      start: 12,
+                                      end: 12,
+                                      top: 6,
+                                      bottom: 6,
+                                    ),
+                                    mobileLandscape:
+                                        EdgeInsetsGeometry.directional(
+                                          start: 8,
+                                          end: 8,
+                                          top: 4,
+                                          bottom: 4,
+                                        ),
+                                    tabletLandscape:
+                                        EdgeInsetsGeometry.directional(
+                                          start: 12,
+                                          end: 12,
+                                          top: 6,
+                                          bottom: 6,
+                                        ),
+                                  ),
+                                  child: ResponsiveText(
+                                    text: 'View Our Collection',
+                                    textStyle: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: context.primaryText,
+                                    ),
+                                    mobileFontSize: 6,
+                                    desktopFontSize: 20,
+                                    tabletFontSize: 16,
+                                    mobileLandscapeFontSize: 12,
+                                    tabletLandscapeFontSize: 18,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                                ResponsiveIconButton(
+                                  onPressed: () {},
+                                  icon: Icons.arrow_outward_rounded,
+                                  color: context.primaryText,
+                                  iconSize: ResponsiveValue(
+                                    mobile: 15,
+                                    desktop: 24,
+                                    tablet: 20,
+                                    mobileLandscape: 18,
+                                    tabletLandscape: 22,
+                                  ),
+                                  padding: const ResponsiveValue(
+                                    mobile: EdgeInsetsGeometry.directional(
+                                      start: 8,
+                                      end: 8,
+                                      top: 4,
+                                      bottom: 4,
+                                    ),
+                                    desktop: EdgeInsetsGeometry.directional(
+                                      start: 16,
+                                      end: 16,
+                                      top: 8,
+                                      bottom: 8,
+                                    ),
+                                    tablet: EdgeInsetsGeometry.directional(
+                                      start: 12,
+                                      end: 12,
+                                      top: 6,
+                                      bottom: 6,
+                                    ),
+                                    mobileLandscape:
+                                        EdgeInsetsGeometry.directional(
+                                          start: 8,
+                                          end: 8,
+                                          top: 4,
+                                          bottom: 4,
+                                        ),
+                                    tabletLandscape:
+                                        EdgeInsetsGeometry.directional(
+                                          start: 12,
+                                          end: 12,
+                                          top: 6,
+                                          bottom: 6,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          ResponsiveContainer(child: Stack(children: [])),
                         ],
                       ),
                     ),
                     ResponsiveContainer(
                       height: const ResponsiveValue(
-                        mobile: 250,
+                        mobile: 280,
                         desktop: 800,
                         tablet: 600,
                         mobileLandscape: 300,
